@@ -11,6 +11,7 @@ pipeline {
 	stage('Build Spring Boot JAR') {
 	  steps {
 		script {
+		  sh 'chmod +x gradlew'  // Fix permission issue
 		  sh './gradlew clean build'  // Build the JAR using Gradle
 		}
 	  }

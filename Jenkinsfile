@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  environment {
+	JAVA_HOME = "/usr/lib/jvm/java-21-openjdk-amd64"
+    PATH = "$JAVA_HOME/bin:$PATH"
+  }
 
   stages {
     stage('Checkout GitHub Repository') {
@@ -11,6 +15,7 @@ pipeline {
 	stage('Build Spring Boot JAR') {
 	  steps {
 		script {
+		  sh 'echo "Using JAVA_HOME: $JAVA_HOME"'
 		  sh 'chmod +x gradlew'  // Fix permission issue
 		  sh './gradlew clean build'  // Build the JAR using Gradle
 		}

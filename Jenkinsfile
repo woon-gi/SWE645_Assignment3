@@ -37,7 +37,8 @@ pipeline {
     stage('Push to Docker Hub') {
       steps {
         script {
-            sh 'docker dhwanii08/whong4_student-survey-form:$BUILD_NUMBER'
+            sh 'docker push dhwanii08/whong4_student-survey-form:$BUILD_NUMBER'
+			
           }
         }
       }

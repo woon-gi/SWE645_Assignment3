@@ -38,12 +38,12 @@ public class SurveyController {
     }
 
     // Update a survey
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Survey> updateSurvey(@RequestBody Survey survey) {
         return new ResponseEntity<>(surveyService.updateSurvey(survey), HttpStatus.OK);
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteSurvey(@RequestBody Map<String, Long> payload) {
         Long surveyId = payload.get("id");
         surveyService.deleteSurveyById(surveyId);

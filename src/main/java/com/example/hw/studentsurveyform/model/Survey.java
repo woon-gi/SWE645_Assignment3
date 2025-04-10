@@ -9,15 +9,18 @@ import jakarta.persistence.Table;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "surveys")
+/**
+ * Survey entity class that maps to the "surveys" table in the database.
+ */
+@Entity // Marks this class as a JPA entity
+@Table(name = "surveys") // Specifies the table name in the database
 public class Survey {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // Primary key for the entity
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generates the ID (auto-increment)
     private Long id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name") // Maps this field to "first_name" column in the table
     private String firstName;
 
     @Column(name = "last_name")
@@ -44,16 +47,17 @@ public class Survey {
     @Column(name = "date_of_survey")
     private Date dateOfSurvey;
 
-    @Column(name = "liked_most")
+    @Column(name = "liked_most") // What the respondent liked most
     private String likedMost;
 
-    @Column(name = "interested_in")
+    @Column(name = "interested_in") // What the respondent is interested in
     private String interestedIn;
 
-    @Column(name = "likelihood")
+    @Column(name = "likelihood") // Likelihood of recommending or engaging
     private String likelihood;
 
-    // Getters
+    // ----- Getters -----
+
     public Long getId() {
         return id;
     }
@@ -106,7 +110,8 @@ public class Survey {
         return likelihood;
     }
 
-    // Setters
+    // ----- Setters -----
+
     public void setId(Long id) {
         this.id = id;
     }

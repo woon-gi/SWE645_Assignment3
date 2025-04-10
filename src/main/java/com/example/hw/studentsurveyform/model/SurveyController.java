@@ -1,3 +1,4 @@
+//Define package
 package com.example.hw.studentsurveyform.model;
 
 import java.util.List;
@@ -10,11 +11,17 @@ import java.util.Map;
 import com.example.hw.studentsurveyform.model.Survey;
 import com.example.hw.studentsurveyform.service.SurveyService;
 
+//Handles HTTP requests and return data as JSON
 @RestController
+
+//set base URL path for all endpoints
 @RequestMapping("/api/surveys")
 public class SurveyController {
+
+    //Inject SurveyService to interact logic layer
     private final SurveyService surveyService;
 
+    //Constructor injection of SurveyService
     public SurveyController(SurveyService surveyService) {
         this.surveyService = surveyService;
     }
@@ -43,6 +50,7 @@ public class SurveyController {
         return new ResponseEntity<>(surveyService.updateSurvey(survey), HttpStatus.OK);
     }
 
+    //delete a survey
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteSurvey(@RequestBody Map<String, Long> payload) {
         Long surveyId = payload.get("id");

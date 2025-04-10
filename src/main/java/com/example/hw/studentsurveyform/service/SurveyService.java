@@ -1,3 +1,4 @@
+//package declaration
 package com.example.hw.studentsurveyform.service;
 
 import org.springframework.stereotype.Service;
@@ -9,25 +10,33 @@ import java.util.Optional;
 
 @Service
 public class SurveyService {
+
+    //Injecting repository layer to interact with the DB
     private final SurveyRepository surveyRepository;
 
+    //dependency injection of the SurveyRepository
     public SurveyService(SurveyRepository surveyRepository) {
         this.surveyRepository = surveyRepository;
     }
 
+    //Retrieve all survey records
     public List<Survey> getAllSurveys() {
         return surveyRepository.findAll();
     }
 
+    //Save a new survey record
     public Survey saveSurvey(Survey survey) {
         return surveyRepository.save(survey);
     }
 
+    //Delete a survey from DB by ID
     public void deleteSurveyById(Long id) {
         surveyRepository.deleteById(id);
     }
 
+    //Update an existing survey
     public Survey updateSurvey(Survey survey) {
+        //check if the survey with the given ID exists
         Optional<Survey> optionalSurvey = surveyRepository.findById(survey.getId());
         if (optionalSurvey.isPresent()) {
             Survey existingSurvey = optionalSurvey.get();
